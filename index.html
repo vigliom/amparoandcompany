@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amparo & Co. | La matriz digital de soluciones conectadas</title>
+    <meta name="description" content="Ecosistema de aplicaciones, servicios y soluciones digitales diseñadas para funcionar de forma modular, escalable y conectada.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        dark: '#0f172a',
+                        darker: '#020617',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glow {
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.3);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+        .matrix-line {
+            stroke-dasharray: 5;
+            animation: dash 20s linear infinite;
+        }
+        @keyframes dash {
+            to { stroke-dashoffset: -100; }
+        }
+        .pulse-dot {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+    </style>
+</head>
+<body class="bg-darker text-white antialiased">
+
+    <!-- ==================== HERO ==================== -->
+    <section class="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-6">
+        <!-- Background Effects -->
+        <div class="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent"></div>
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl"></div>
+        
+        <!-- Logo -->
+        <div class="relative z-10 text-center">
+            <div class="mb-8">
+                <div class="w-24 h-24 mx-auto bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center glow rotate-3 hover:rotate-0 transition-transform duration-300">
+                    <span class="text-4xl font-bold">A</span>
+                </div>
+            </div>
+            
+            <!-- Claim -->
+            <h1 class="text-5xl md:text-7xl font-bold mb-4">
+                <span class="gradient-text">Amparo & Co.</span>
+            </h1>
+            
+            <!-- Mini descripción -->
+            <p class="text-xl md:text-2xl text-gray-400 mb-8 max-w-2xl mx-auto">
+                La matriz digital de soluciones conectadas
+            </p>
+            
+            <!-- Botón principal -->
+            <a href="#servicios" class="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary px-8 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity">
+                Explorar servicios
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+            <div class="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center pt-2">
+                <div class="w-1.5 h-3 bg-gray-400 rounded-full"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== QUÉ ES AMPARO & CO. ==================== -->
+    <section class="py-24 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8">
+                ¿Qué es <span class="gradient-text">Amparo & Co.</span>?
+            </h2>
+            <p class="text-xl md:text-2xl text-gray-300 leading-relaxed">
+                Amparo & Co. es un <strong class="text-white">ecosistema de aplicaciones, servicios y soluciones digitales</strong> diseñadas para funcionar de forma <span class="text-primary">modular</span>, <span class="text-secondary">escalable</span> y <span class="text-purple-400">conectada</span>.
+            </p>
+            <div class="mt-12 flex flex-wrap justify-center gap-4">
+                <span class="px-4 py-2 bg-dark rounded-full text-sm text-gray-400 border border-gray-800">Arquitectura modular</span>
+                <span class="px-4 py-2 bg-dark rounded-full text-sm text-gray-400 border border-gray-800">APIs robustas</span>
+                <span class="px-4 py-2 bg-dark rounded-full text-sm text-gray-400 border border-gray-800">Escalabilidad infinita</span>
+                <span class="px-4 py-2 bg-dark rounded-full text-sm text-gray-400 border border-gray-800">Integración total</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SERVICIOS ==================== -->
+    <section id="servicios" class="py-24 px-6 bg-dark/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Nuestros Servicios</h2>
+                <p class="text-gray-400 text-lg">Soluciones digitales para cada necesidad</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- WebApps -->
+                <div class="card-hover bg-darker p-8 rounded-2xl border border-gray-800">
+                    <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">WebApps</h3>
+                    <p class="text-gray-400 mb-6">Aplicaciones web modernas, rápidas y responsivas. PWAs listas para cualquier dispositivo.</p>
+                    <a href="#" class="inline-flex items-center text-blue-400 hover:text-blue-300 font-medium">
+                        Descubrir más
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Kioscos táctiles -->
+                <div class="card-hover bg-darker p-8 rounded-2xl border border-gray-800">
+                    <div class="w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Kioscos Táctiles</h3>
+                    <p class="text-gray-400 mb-6">Interfaces optimizadas para puntos de venta, autogestión y experiencias interactivas.</p>
+                    <a href="#" class="inline-flex items-center text-green-400 hover:text-green-300 font-medium">
+                        Descubrir más
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- APIs & automatización -->
+                <div class="card-hover bg-darker p-8 rounded-2xl border border-gray-800">
+                    <div class="w-14 h-14 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">APIs & Automatización</h3>
+                    <p class="text-gray-400 mb-6">Conecta sistemas, automatiza procesos y libera el potencial de tus datos.</p>
+                    <a href="#" class="inline-flex items-center text-yellow-400 hover:text-yellow-300 font-medium">
+                        Descubrir más
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Personalización de productos -->
+                <div class="card-hover bg-darker p-8 rounded-2xl border border-gray-800">
+                    <div class="w-14 h-14 bg-gradient-to-br from-pink-500 to-rose-500 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Personalización de Productos</h3>
+                    <p class="text-gray-400 mb-6">Configuradores visuales y herramientas de diseño para productos únicos.</p>
+                    <a href="#" class="inline-flex items-center text-pink-400 hover:text-pink-300 font-medium">
+                        Descubrir más
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Soluciones a medida -->
+                <div class="card-hover bg-darker p-8 rounded-2xl border border-gray-800 md:col-span-2 lg:col-span-2">
+                    <div class="flex flex-col md:flex-row md:items-center gap-6">
+                        <div class="w-14 h-14 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center flex-shrink-0">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold mb-3">Soluciones a Medida</h3>
+                            <p class="text-gray-400 mb-6">¿Tienes un reto único? Desarrollamos soluciones personalizadas que se integran perfectamente en tu ecosistema.</p>
+                        </div>
+                        <a href="#" class="inline-flex items-center bg-gradient-to-r from-primary to-secondary px-6 py-3 rounded-full font-medium hover:opacity-90 transition-opacity whitespace-nowrap">
+                            Hablemos
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== MATRIZ VISUAL ==================== -->
+    <section class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">La Matriz <span class="gradient-text">Amparo</span></h2>
+                <p class="text-gray-400 text-lg">Arquitectura conectada. Todo funciona en armonía.</p>
+            </div>
+
+            <!-- Matrix Grid -->
+            <div class="relative">
+                <!-- SVG Connections -->
+                <svg class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 0;">
+                    <defs>
+                        <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.5" />
+                            <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0.5" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Horizontal lines -->
+                    <line x1="20%" y1="50%" x2="80%" y2="50%" stroke="url(#lineGradient)" stroke-width="2" class="matrix-line"/>
+                    <!-- Vertical lines -->
+                    <line x1="50%" y1="20%" x2="50%" y2="80%" stroke="url(#lineGradient)" stroke-width="2" class="matrix-line"/>
+                    <!-- Diagonal lines -->
+                    <line x1="25%" y1="25%" x2="75%" y2="75%" stroke="url(#lineGradient)" stroke-width="1" class="matrix-line" opacity="0.5"/>
+                    <line x1="75%" y1="25%" x2="25%" y2="75%" stroke="url(#lineGradient)" stroke-width="1" class="matrix-line" opacity="0.5"/>
+                </svg>
+
+                <div class="grid grid-cols-3 gap-6 relative z-10">
+                    <!-- Top row -->
+                    <div class="flex justify-center">
+                        <div class="w-24 h-24 bg-dark rounded-2xl border border-gray-700 flex items-center justify-center card-hover">
+                            <div class="text-center">
+                                <div class="w-3 h-3 bg-blue-500 rounded-full mx-auto mb-2 pulse-dot"></div>
+                                <span class="text-xs text-gray-400">WebApps</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <div class="w-24 h-24 bg-dark rounded-2xl border border-gray-700 flex items-center justify-center card-hover">
+                            <div class="text-center">
+                                <div class="w-3 h-3 bg-green-500 rounded-full mx-auto mb-2 pulse-dot"></div>
+                                <span class="text-xs text-gray-400">Kioscos</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <div class="w-24 h-24 bg-dark rounded-2xl border border-gray-700 flex items-center justify-center card-hover">
+                            <div class="text-center">
+                                <div class="w-3 h-3 bg-yellow-500 rounded-full mx-auto mb-2 pulse-dot"></div>
+                                <span class="text-xs text-gray-400">APIs</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Middle row -->
+                    <div class="flex justify-center">
+                        <div class="w-24 h-24 bg-dark rounded-2xl border border-gray-700 flex items-center justify-center card-hover">
+                            <div class="text-center">
+                                <div class="w-3 h-3 bg-pink-500 rounded-full mx-auto mb-2 pulse-dot"></div>
+                                <span class="text-xs text-gray-400">Custom</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <div class="w-32 h-32 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center glow">
+                            <div class="text-center">
+                                <span class="text-2xl font-bold">A</span>
+                                <p class="text-xs mt-1 opacity-80">Core</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <div class="w-24 h-24 bg-dark rounded-2xl border border-gray-700 flex items-center justify-center card-hover">
+                            <div class="text-center">
+                                <div class="w-3 h-3 bg-purple-500 rounded-full mx-auto mb-2 pulse-dot"></div>
+                                <span class="text-xs text-gray-400">Admin</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom row -->
+                    <div class="flex justify-center">
+                        <div class="w-24 h-24 bg-dark rounded-2xl border border-gray-700 flex items-center justify-center card-hover">
+                            <div class="text-center">
+                                <div class="w-3 h-3 bg-cyan-500 rounded-full mx-auto mb-2 pulse-dot"></div>
+                                <span class="text-xs text-gray-400">Docs</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <div class="w-24 h-24 bg-dark rounded-2xl border border-gray-700 flex items-center justify-center card-hover">
+                            <div class="text-center">
+                                <div class="w-3 h-3 bg-red-500 rounded-full mx-auto mb-2 pulse-dot"></div>
+                                <span class="text-xs text-gray-400">Soporte</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <div class="w-24 h-24 bg-dark rounded-2xl border border-gray-700 flex items-center justify-center card-hover">
+                            <div class="text-center">
+                                <div class="w-3 h-3 bg-emerald-500 rounded-full mx-auto mb-2 pulse-dot"></div>
+                                <span class="text-xs text-gray-400">Data</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-center text-gray-500 mt-12 text-sm">
+                Cada nodo conectado. Cada servicio integrado. Una sola matriz.
+            </p>
+        </div>
+    </section>
+
+    <!-- ==================== ACCESOS ==================== -->
+    <section class="py-24 px-6 bg-dark/50">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Accesos Directos</h2>
+                <p class="text-gray-400">Entra directamente a donde necesitas</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- App -->
+                <a href="#" class="group bg-darker p-6 rounded-2xl border border-gray-800 text-center card-hover">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-500/30 transition-colors">
+                        <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold mb-1">App</h3>
+                    <p class="text-xs text-gray-500">app.amparo.co</p>
+                </a>
+
+                <!-- Admin -->
+                <a href="#" class="group bg-darker p-6 rounded-2xl border border-gray-800 text-center card-hover">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-purple-500/30 transition-colors">
+                        <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold mb-1">Admin</h3>
+                    <p class="text-xs text-gray-500">admin.amparo.co</p>
+                </a>
+
+                <!-- Docs -->
+                <a href="#" class="group bg-darker p-6 rounded-2xl border border-gray-800 text-center card-hover">
+                    <div class="w-12 h-12 bg-cyan-500/20 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-cyan-500/30 transition-colors">
+                        <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold mb-1">Docs</h3>
+                    <p class="text-xs text-gray-500">docs.amparo.co</p>
+                </a>
+
+                <!-- Soporte -->
+                <a href="#" class="group bg-darker p-6 rounded-2xl border border-gray-800 text-center card-hover">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-green-500/30 transition-colors">
+                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold mb-1">Soporte</h3>
+                    <p class="text-xs text-gray-500">soporte.amparo.co</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="py-12 px-6 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <!-- Logo & Copyright -->
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                        <span class="text-lg font-bold">A</span>
+                    </div>
+                    <div>
+                        <p class="font-semibold">Amparo & Co.</p>
+                        <p class="text-sm text-gray-500">© 2026 Todos los derechos reservados</p>
+                    </div>
+                </div>
+
+                <!-- Status -->
+                <div class="flex items-center gap-2 px-4 py-2 bg-dark rounded-full border border-gray-800">
+                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <span class="text-sm text-gray-400">Sistema operativo</span>
+                </div>
+
+                <!-- Powered by -->
+                <div class="text-center md:text-right">
+                    <p class="text-sm text-gray-500">Powered by</p>
+                    <p class="gradient-text font-semibold">Amparo Matrix</p>
+                </div>
+            </div>
+
+            <!-- Bottom links -->
+            <div class="mt-8 pt-8 border-t border-gray-800 flex flex-wrap justify-center gap-6 text-sm text-gray-500">
+                <a href="#" class="hover:text-white transition-colors">Privacidad</a>
+                <a href="#" class="hover:text-white transition-colors">Términos</a>
+                <a href="#" class="hover:text-white transition-colors">Cookies</a>
+                <a href="#" class="hover:text-white transition-colors">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
