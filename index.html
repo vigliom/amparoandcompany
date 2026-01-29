@@ -150,25 +150,11 @@
             </div>
 
             <!-- Matrix Grid -->
-            <div class="relative">
-                <!-- SVG Connections -->
-                <svg id="matrix-svg" class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 0;"></svg>
-                    <defs>
-                        <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.5" />
-                            <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0.5" />
-                        </linearGradient>
-                    </defs>
-                    <!-- Horizontal lines -->
-                    <line x1="20%" y1="50%" x2="80%" y2="50%" stroke="url(#lineGradient)" stroke-width="2" class="matrix-line"/>
-                    <!-- Vertical lines -->
-                    <line x1="50%" y1="20%" x2="50%" y2="80%" stroke="url(#lineGradient)" stroke-width="2" class="matrix-line"/>
-                    <!-- Diagonal lines -->
-                    <line x1="25%" y1="25%" x2="75%" y2="75%" stroke="url(#lineGradient)" stroke-width="1" class="matrix-line" opacity="0.5"/>
-                    <line x1="75%" y1="25%" x2="25%" y2="75%" stroke="url(#lineGradient)" stroke-width="1" class="matrix-line" opacity="0.5"/>
-                </svg>
-
-                <div id="matrix-container" class="relative z-10">
+            <div id="matrix-wrapper" class="relative">
+                <!-- SVG Connections (behind nodes) -->
+                <svg id="matrix-svg" class="absolute inset-0 w-full h-full pointer-events-none overflow-visible" style="z-index: 1;"></svg>
+                <!-- Nodes grid (above SVG) -->
+                <div id="matrix-container" class="relative" style="z-index: 2;">
                     <div id="matrix-grid" class="grid grid-cols-3 gap-6"></div>
                 </div>
             </div>
@@ -307,8 +293,31 @@
         </div>
     </footer>
 
-    </footer>
+    <!-- ==================== MODAL SERVICIOS ==================== -->
+    <div id="services-modal" class="fixed inset-0 z-50 hidden">
+        <!-- Backdrop -->
+        <div id="modal-backdrop" class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+        <!-- Modal content -->
+        <div class="relative h-full flex items-center justify-center p-6">
+            <div class="bg-darker border border-gray-800 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
+                <!-- Header -->
+                <div class="flex items-center justify-between p-6 border-b border-gray-800">
+                    <div>
+                        <h3 class="text-2xl font-bold">Todos los <span class="gradient-text">Servicios</span></h3>
+                        <p class="text-gray-400 text-sm mt-1">El ecosistema completo de Amparo & Co.</p>
+                    </div>
+                    <button id="close-modal" class="w-10 h-10 rounded-full bg-dark border border-gray-700 flex items-center justify-center hover:border-primary transition-colors">
+                        <span class="text-gray-400 text-xl">&times;</span>
+                    </button>
+                </div>
+                <!-- Services grid -->
+                <div id="modal-services-grid" class="p-6 overflow-y-auto max-h-[calc(90vh-120px)] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Rendered by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <script src="js/services.js"></script>
-    </body>
+    <script src="js/services.js"></script>
+</body>
 </html>

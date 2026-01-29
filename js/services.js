@@ -31,6 +31,51 @@ document.addEventListener('DOMContentLoaded', async () => {
   const serviciosContainer = document.getElementById('servicios-grid');
   const matrixGrid = document.getElementById('matrix-grid');
   const matrixSvg = document.getElementById('matrix-svg');
+  const servicesModal = document.getElementById('services-modal');
+  const modalServicesGrid = document.getElementById('modal-services-grid');
+
+  // ========== RENDER MODAL SERVICES ==========
+  const renderModalServices = () => {
+    if (!modalServicesGrid) return;
+    modalServicesGrid.innerHTML = services.map(s => {
+      const c = getColor(s.color);
+      const isActive = s.state === 'active';
+      const stateLabel = s.state === 'active' ? 'Activo' : s.state === 'soon' ? 'Próximamente' : 'Idea';
+      const stateBg = s.state === 'active' ? 'bg-green-500/20 text-green-400' : s.state === 'soon' ? 'bg-amber-500/20 text-amber-400' : 'bg-violet-500/20 text-violet-400';
+      const wrapper = isActive ? 'a' : 'div';
+      const hrefAttr = isActive && s.url ? `href="${s.url}"` : '';
+      const cursorClass = isActive ? 'cursor-pointer' : 'cursor-default opacity-70';
+      return `
+        <${wrapper} ${hrefAttr} class="bg-dark p-5 rounded-2xl border ${c.border} ${cursorClass} hover:border-opacity-100 transition-all group">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 ${c.bg} rounded-xl flex items-center justify-center flex-shrink-0">
+              <span class="text-2xl">${s.icon}</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 mb-1">
+                <h4 class="font-semibold ${c.text} truncate">${s.title}</h4>
+                <span class="px-2 py-0.5 ${stateBg} text-xs rounded-full flex-shrink-0">${stateLabel}</span>
+              </div>
+              <p class="text-gray-400 text-sm line-clamp-2">${s.desc || ''}</p>
+            </div>
+          </div>
+        </${wrapper}>
+      `;
+    }).join('\n');
+  };
+
+  // ========== MODAL CONTROLS ==========
+  const openModal = () => {
+    if (!servicesModal) return;
+    servicesModal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    if (!servicesModal) return;
+    servicesModal.classList.add('hidden');
+    document.body.style.overflow = '';
+  };
 
   // ========== RENDER ACCESOS ==========
   const renderAccesos = () => {
@@ -105,11 +150,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   // ========== RENDER MATRIX ==========
   const renderMatrix = () => {
     if (!matrixGrid || !matrixSvg) return;
-    // 3x3 grid, center (index 4) is Core
-    const positions = [0,1,2,3,5,6,7,8]; // skip 4
+    // 3x3 grid: positions 0-8, center (4) is Core
+    // Map grid positions to service indices: [0,1,2,3,skip,4,5,6,7]
     const cells = [];
+    let serviceIdx = 0;
     for (let i = 0; i < 9; i++) {
       if (i === 4) {
+        // Core en el centro
         cells.push(`
           <div class="flex justify-center">
             <div id="matrix-core" class="w-32 h-32 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center glow">
@@ -121,8 +168,8 @@ document.addEventListener('DOMContentLoaded', async () => {
           </div>
         `);
       } else {
-        const sIdx = positions.indexOf(i);
-        const s = services[sIdx];
+        const s = services[serviceIdx];
+        serviceIdx++;
         if (s) {
           const c = getColor(s.color);
           const isActive = s.state === 'active';
@@ -140,14 +187,15 @@ document.addEventListener('DOMContentLoaded', async () => {
             </div>
           `);
         } else {
+          // Nodo "+Más" para abrir modal con todos los servicios
           cells.push(`
             <div class="flex justify-center">
-              <div class="w-24 h-24 bg-dark rounded-2xl border border-gray-700 flex items-center justify-center card-hover opacity-30">
+              <button data-node="plus" id="open-services-modal" class="matrix-node w-24 h-24 bg-dark rounded-2xl border border-gray-700 flex items-center justify-center card-hover cursor-pointer hover:border-primary transition-colors">
                 <div class="text-center">
-                  <span class="text-xl text-gray-600">+</span>
-                  <p class="text-xs mt-1 text-gray-600">Más</p>
+                  <span class="text-2xl">➕</span>
+                  <p class="text-xs mt-1 text-gray-400">Ver todo</p>
                 </div>
-              </div>
+              </button>
             </div>
           `);
         }
@@ -162,18 +210,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Clear
     matrixSvg.innerHTML = `
       <defs>
-        <linearGradient id="lineGreen" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#22c55e;stop-opacity:0.8" />
-          <stop offset="100%" style="stop-color:#16a34a;stop-opacity:0.8" />
-        </linearGradient>
-        <linearGradient id="lineRed" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#ef4444;stop-opacity:0.8" />
-          <stop offset="100%" style="stop-color:#dc2626;stop-opacity:0.8" />
-        </linearGradient>
-        <linearGradient id="lineViolet" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.5" />
-          <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:0.5" />
-        </linearGradient>
         <marker id="arrowGreen" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
           <path d="M0,0 L0,6 L6,3 z" fill="#22c55e" />
         </marker>
@@ -187,29 +223,41 @@ document.addEventListener('DOMContentLoaded', async () => {
     `;
 
     const core = document.getElementById('matrix-core');
-    if (!core) return;
+    const wrapper = document.getElementById('matrix-wrapper');
+    if (!core || !wrapper) return;
+    
+    // Set SVG dimensions explicitly
+    const wrapperRect = wrapper.getBoundingClientRect();
+    const width = wrapperRect.width;
+    const height = wrapperRect.height;
+    matrixSvg.setAttribute('width', width);
+    matrixSvg.setAttribute('height', height);
+    matrixSvg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+    
     const svgRect = matrixSvg.getBoundingClientRect();
     const coreRect = core.getBoundingClientRect();
     const cx = coreRect.left - svgRect.left + coreRect.width / 2;
     const cy = coreRect.top - svgRect.top + coreRect.height / 2;
 
-    services.forEach(s => {
-      const node = matrixGrid.querySelector(`[data-node="${s.id}"]`);
-      if (!node) return;
+    // Draw lines to all nodes including '+'
+    const allNodes = matrixGrid.querySelectorAll('[data-node]');
+    allNodes.forEach(node => {
+      const nodeId = node.getAttribute('data-node');
+      const s = services.find(srv => srv.id === nodeId);
       const r = node.getBoundingClientRect();
       const nx = r.left - svgRect.left + r.width / 2;
       const ny = r.top - svgRect.top + r.height / 2;
 
-      // Determine line color based on state and ping
-      let strokeUrl = 'url(#lineViolet)';
+      // Determine line color based on state and ping (using solid colors)
+      let strokeColor = '#8b5cf6'; // violet
       let marker = 'url(#arrowViolet)';
-      if (s.state === 'active' && s.url) {
+      if (s && s.state === 'active' && s.url) {
         const pingOk = pingResults[s.id];
         if (pingOk === true) {
-          strokeUrl = 'url(#lineGreen)';
+          strokeColor = '#22c55e'; // green
           marker = 'url(#arrowGreen)';
         } else if (pingOk === false) {
-          strokeUrl = 'url(#lineRed)';
+          strokeColor = '#ef4444'; // red
           marker = 'url(#arrowRed)';
         }
       }
@@ -219,11 +267,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       line.setAttribute('y1', cy);
       line.setAttribute('x2', nx);
       line.setAttribute('y2', ny);
-      line.setAttribute('stroke', strokeUrl);
-      line.setAttribute('stroke-width', '2');
+      line.setAttribute('stroke', strokeColor);
+      line.setAttribute('stroke-opacity', '0.7');
+      line.setAttribute('stroke-width', '3');
       line.setAttribute('marker-end', marker);
       line.setAttribute('class', 'matrix-line');
-      line.setAttribute('data-line-for', s.id);
+      line.setAttribute('data-line-for', nodeId);
       matrixSvg.appendChild(line);
 
       // Hover
@@ -313,13 +362,34 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderAccesos();
   renderServicios();
   renderMatrix();
-  drawConnections();
+  renderModalServices();
+  
+  // Small delay to ensure DOM elements are properly laid out
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      drawConnections();
+    });
+  });
 
   // Resize handler
   let resizeTimeout;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(drawConnections, 150);
+  });
+
+  // Modal event listeners
+  const openModalBtn = document.getElementById('open-services-modal');
+  const closeModalBtn = document.getElementById('close-modal');
+  const modalBackdrop = document.getElementById('modal-backdrop');
+
+  if (openModalBtn) openModalBtn.addEventListener('click', openModal);
+  if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+  if (modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
+
+  // Close modal with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
   });
 
   // ========== RUN PINGS ==========
