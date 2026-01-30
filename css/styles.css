@@ -1,0 +1,281 @@
+/* ==================== URBAN BOHO STYLES ==================== */
+/* Paleta: Rosa dusty, dorado, crema, terracota */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+/* ==================== VARIABLES ==================== */
+:root {
+    --rosa-dusty: #E091A3;
+    --rosa-claro: #FADDE1;
+    --rosa-intenso: #D4627A;
+    --dorado: #D4AF37;
+    --dorado-claro: #F4E4BA;
+    --dorado-rosa: #E8C4A0;
+    --crema: #FDF8F5;
+    --crema-oscuro: #F8EDE8;
+    --terracota: #B85A8A;
+    --texto-oscuro: #3D2C2E;
+    --texto-suave: #6B5B5D;
+    --blanco: #FFFFFF;
+}
+
+/* ==================== BASE ==================== */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--crema) 0%, var(--rosa-claro) 50%, var(--crema-oscuro) 100%);
+    color: var(--texto-oscuro);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* ==================== GRADIENT TEXT ==================== */
+.gradient-text {
+    background: linear-gradient(135deg, var(--rosa-intenso), var(--dorado), var(--rosa-dusty));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ==================== GLOW EFFECT ==================== */
+.glow {
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.3), 0 0 60px rgba(212, 165, 165, 0.2);
+}
+
+/* ==================== CARD HOVER ==================== */
+.card-hover {
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15), 0 10px 20px rgba(212, 165, 165, 0.1);
+}
+
+/* ==================== MATRIX ANIMATION ==================== */
+.matrix-line {
+    stroke-dasharray: 5;
+    animation: dash 20s linear infinite;
+}
+
+@keyframes dash {
+    to { stroke-dashoffset: -100; }
+}
+
+.pulse-dot {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+/* ==================== HERO SECTION ==================== */
+.hero-section {
+    background: linear-gradient(180deg, var(--crema) 0%, var(--rosa-claro) 100%);
+    position: relative;
+}
+
+.hero-bg-gradient {
+    background: radial-gradient(ellipse at 30% 20%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(212, 165, 165, 0.2) 0%, transparent 50%);
+}
+
+.hero-blob-1 {
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+}
+
+.hero-blob-2 {
+    background: radial-gradient(circle, rgba(196, 139, 159, 0.2) 0%, transparent 70%);
+}
+
+/* ==================== LOGO BOX ==================== */
+.logo-box {
+    background: linear-gradient(135deg, var(--rosa-intenso), var(--dorado));
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.3), 0 0 60px rgba(212, 165, 165, 0.2);
+}
+
+/* ==================== BUTTONS ==================== */
+.btn-primary {
+    background: linear-gradient(135deg, var(--rosa-intenso), var(--dorado));
+    color: var(--blanco);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+}
+
+/* ==================== TAGS ==================== */
+.tag {
+    background: var(--blanco);
+    border: 1px solid var(--dorado-claro);
+    color: var(--texto-suave);
+}
+
+/* ==================== SECTIONS ==================== */
+.section-alt {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+/* ==================== ACCESS CARDS ==================== */
+.access-card {
+    background: var(--blanco);
+    border: 1px solid var(--dorado-claro);
+    transition: all 0.3s ease;
+}
+
+.access-card:hover {
+    border-color: var(--dorado);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+}
+
+.access-card.active {
+    border-color: var(--rosa-intenso);
+    box-shadow: 0 0 20px rgba(196, 139, 159, 0.2);
+}
+
+.access-card.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Icon backgrounds */
+.icon-pink { background: rgba(196, 139, 159, 0.15); }
+.icon-rose { background: rgba(212, 165, 165, 0.15); }
+.icon-orange { background: rgba(232, 196, 160, 0.2); }
+.icon-yellow { background: rgba(244, 228, 186, 0.3); }
+.icon-cyan { background: rgba(180, 210, 220, 0.2); }
+.icon-emerald { background: rgba(180, 210, 180, 0.2); }
+.icon-violet { background: rgba(200, 180, 220, 0.2); }
+
+/* ==================== FOOTER ==================== */
+.footer {
+    background: linear-gradient(180deg, transparent 0%, rgba(212, 165, 165, 0.1) 100%);
+    border-top: 1px solid var(--dorado-claro);
+}
+
+.footer-logo {
+    background: linear-gradient(135deg, var(--rosa-intenso), var(--dorado));
+}
+
+.status-badge {
+    background: var(--blanco);
+    border: 1px solid var(--dorado-claro);
+}
+
+/* ==================== MODAL ==================== */
+.modal-backdrop {
+    background: rgba(61, 44, 46, 0.8);
+    backdrop-filter: blur(8px);
+}
+
+.modal-content {
+    background: var(--crema);
+    border: 1px solid var(--dorado-claro);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--dorado-claro);
+}
+
+.modal-close {
+    background: var(--blanco);
+    border: 1px solid var(--dorado-claro);
+}
+
+.modal-close:hover {
+    border-color: var(--rosa-intenso);
+}
+
+/* ==================== SCROLL INDICATOR ==================== */
+.scroll-indicator {
+    border-color: var(--terracota);
+}
+
+.scroll-indicator-dot {
+    background: var(--terracota);
+}
+
+/* ==================== LINKS ==================== */
+a {
+    color: var(--rosa-intenso);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--dorado);
+}
+
+/* ==================== DECORATIVE ELEMENTS ==================== */
+.boho-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ==================== ACTIVE STATUS ==================== */
+.status-active {
+    color: #22c55e;
+}
+
+.status-coming {
+    color: var(--texto-suave);
+}
+
+.status-idea {
+    color: var(--terracota);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+    .hero-section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* ==================== MATRIX GRID NODES ==================== */
+.matrix-node {
+    background: var(--blanco);
+    border: 2px solid var(--dorado-claro);
+    transition: all 0.3s ease;
+}
+
+.matrix-node:hover {
+    border-color: var(--dorado);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+.matrix-node.active {
+    border-color: var(--rosa-intenso);
+}
+
+/* ==================== CUSTOM SCROLLBAR ==================== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--crema-oscuro);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--rosa-dusty);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--rosa-intenso);
+}
+
+/* ==================== SELECTION ==================== */
+::selection {
+    background: var(--rosa-dusty);
+    color: var(--blanco);
+}
