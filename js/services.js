@@ -156,14 +156,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     let serviceIdx = 0;
     for (let i = 0; i < 9; i++) {
       if (i === 4) {
-        // Core en el centro
+        // Core en el centro con logo
         cells.push(`
           <div class="flex justify-center">
-            <div id="matrix-core" class="w-32 h-32 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center glow">
-              <div class="text-center">
-                <span class="text-2xl font-bold">A</span>
-                <p class="text-xs mt-1 opacity-80">Core</p>
-              </div>
+            <div id="matrix-core" class="w-32 h-32 rounded-2xl flex items-center justify-center glow overflow-hidden">
+              <img src="logo.svg" alt="Amparo & Co. Core" class="w-full h-full object-contain mix-blend-multiply" onerror="this.src='logo.png'">
             </div>
           </div>
         `);
